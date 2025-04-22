@@ -57,11 +57,7 @@ price_tracker/
 
 ## Demo
 
-<<<<<<< HEAD
-- **Power BI Outputs**: Available in `price_tracker.pdf` and `price_tracker_report_power_bi.pptx`.
-=======
 - **Power BI Outputs**: Available in `price_tracker.pdf` and `price_tracker_report_power_bi.pptx`. Please ensure you use an official or work account to open the PowerPoint presentation.
->>>>>>> cf05084 (project updated)
 
 
 ## Technologies
