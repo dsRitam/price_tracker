@@ -11,7 +11,6 @@ A dynamic e-commerce price tracker that scrapes product data from Amazon and Fli
 - **Interactive Dashboard**: Displays price comparisons, sentiment distribution, and brand distribution using Plotly.
 - **Data Export**: Downloads processed `final_data.csv` for external use (e.g., Power BI).
 - **Power BI Integration**: Manual data loading into Power BI for advanced visualizations, exported as PPT/PDF.
-- **Deployment**: Hosted on Streamlit Cloud for easy access.
 
 ## Project Structure
 
@@ -22,7 +21,6 @@ price_tracker/
 ├── data_cleaning.py          # Cleans scraped data
 ├── sentiment.py              # Performs sentiment analysis
 ├── requirements.txt          # Python dependencies
-├── packages.txt              # System packages for Selenium
 ├── README.md                 # Project documentation
 ```
 
@@ -59,7 +57,11 @@ price_tracker/
 
 ## Demo
 
+<<<<<<< HEAD
 - **Power BI Outputs**: Available in `price_tracker.pdf` and `price_tracker_report_power_bi.pptx`.
+=======
+- **Power BI Outputs**: Available in `price_tracker.pdf` and `price_tracker_report_power_bi.pptx`. Please ensure you use an official or work account to open the PowerPoint presentation.
+>>>>>>> cf05084 (project updated)
 
 
 ## Technologies
