@@ -59,7 +59,6 @@ price_tracker/
 
 ## Demo
 
-- **Live App**: Visit 
 - **Power BI Outputs**: Available in `price_tracker.pdf` and `price_tracker_report_power_bi.pptx`.
 
 
@@ -68,13 +67,6 @@ price_tracker/
 - **Python**: Streamlit, Pandas, Selenium, TextBlob, Plotly
 - **Web Scraping**: Selenium with ChromeDriver
 - **Visualization**: Plotly, Power BI
-
-
-## Contact
-
-- **Author**: Ritam 
-- **GitHub**: dsRitam
-- **Email**: ds.ritam25@gmail.com
 
 ---
 
