@@ -24,7 +24,7 @@ chrome_options.add_argument(
 chrome_options.add_argument('--headless')  # Run without opening browser
 chrome_options.add_argument('--no-sandbox')  # Required for Streamlit Cloud
 chrome_options.add_argument('--disable-dev-shm-usage')  # Required for Streamlit Cloud
-
+chrome_options.binary_location = '/usr/bin/chromium'  # Streamlit Cloud's chromium path
 
 
 def wait_for_page_to_load(driver, wait):
@@ -42,8 +42,7 @@ search_query = "smartphones"
 # <---------------------------------- AMAZON ---------------------------------->
 
 def amazon_web_scraper(chrome_options, search_query):
-    service = Service('/usr/bin/chromium-chromedriver')  # Path for Streamlit Cloud
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
     wait = WebDriverWait(driver,10)
     driver.maximize_window()
 
@@ -162,8 +161,7 @@ def amazon_web_scraper(chrome_options, search_query):
 # <---------------------------------- FLIPKART ---------------------------------->
 
 def flipkart_web_scraper(chrome_options, search_query, all_products):
-    service = Service('/usr/bin/chromium-chromedriver')
-    driver = webdriver.Chrome(service=service, options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
     wait = WebDriverWait(driver,10)
     driver.maximize_window()
 
