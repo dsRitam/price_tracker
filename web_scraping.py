@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -21,6 +22,8 @@ chrome_options.add_argument("--enable-features=NetworkServiceInProcess")
 chrome_options.add_argument(
     "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36")
 chrome_options.add_argument('--headless')  # Run without opening browser
+chrome_options.add_argument('--no-sandbox')  # Required for Streamlit Cloud
+chrome_options.add_argument('--disable-dev-shm-usage')  # Required for Streamlit Cloud
 
 
 
@@ -39,7 +42,8 @@ search_query = "smartphones"
 # <---------------------------------- AMAZON ---------------------------------->
 
 def amazon_web_scraper(chrome_options, search_query):
-    driver = webdriver.Chrome(options=chrome_options)
+    service = Service('/usr/bin/chromium-chromedriver')  # Path for Streamlit Cloud
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     wait = WebDriverWait(driver,10)
     driver.maximize_window()
 
@@ -158,7 +162,8 @@ def amazon_web_scraper(chrome_options, search_query):
 # <---------------------------------- FLIPKART ---------------------------------->
 
 def flipkart_web_scraper(chrome_options, search_query, all_products):
-    driver = webdriver.Chrome(options=chrome_options)
+    service = Service('/usr/bin/chromium-chromedriver')
+    driver = webdriver.Chrome(service=service, options=chrome_options)
     wait = WebDriverWait(driver,10)
     driver.maximize_window()
 
