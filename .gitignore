@@ -178,3 +178,4 @@ scrape_data/Smartwatches_product_data.csv
 scrape_data/smartphones_product_data.csv
 final_data.csv
 price_tracker.pbix
+scrape_data/jug_product_data.csv

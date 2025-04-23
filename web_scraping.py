@@ -4,12 +4,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
 import time
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 import os
 import sys
-
+import tempfile
 
 # options
 chrome_options = Options()
@@ -21,8 +22,10 @@ chrome_options.add_argument("--enable-features=NetworkServiceInProcess")
 #chrome_options.add_argument("--disable-features=NetworkService")
 chrome_options.add_argument(
     "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36")
-chrome_options.add_argument('--headless')  # Run without opening browser
-
+#chrome_options.add_argument('--headless')  # Run without opening browser
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_argument(f"--user-data-dir={tempfile.gettempdir()}/chrome-profile-{os.getpid()}")  # Unique user data dir
 
 
 def wait_for_page_to_load(driver, wait):
@@ -40,7 +43,8 @@ search_query = "smartphones"
 # <---------------------------------- AMAZON ---------------------------------->
 
 def amazon_web_scraper(chrome_options, search_query):
-    driver = webdriver.Chrome(options=chrome_options)
+    # driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     wait = WebDriverWait(driver,10)
     driver.maximize_window()
 
@@ -159,7 +163,8 @@ def amazon_web_scraper(chrome_options, search_query):
 # <---------------------------------- FLIPKART ---------------------------------->
 
 def flipkart_web_scraper(chrome_options, search_query, all_products):
-    driver = webdriver.Chrome(options=chrome_options)
+    # driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     wait = WebDriverWait(driver,10)
     driver.maximize_window()
 
@@ -247,6 +252,7 @@ def flipkart_web_scraper(chrome_options, search_query, all_products):
         if not products_on_page:  
             break
         all_products.extend(products_on_page)
+        
         try:
             time.sleep(1)
             current_url = driver.current_url  # Getting current URL before clicking
